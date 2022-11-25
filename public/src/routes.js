@@ -1,6 +1,5 @@
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import 'normalize.css';
 import '../css/global.css';
 
 const Index = lazy(() => import('./pages/index/index'));

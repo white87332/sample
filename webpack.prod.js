@@ -2,6 +2,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const PreloadWebpackPlugin = require('@vue/preload-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 module.exports = {
     mode: 'production',
@@ -32,14 +34,19 @@ module.exports = {
                 use: 'url?limit=8192&name=./asset/img/[name].[ext]'
             },
             {
-                test: /\.css$/,
-                use: [{ loader: 'style-loader' }, { loader: 'css-loader' }]
+                test: /\.css$/i,
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
             },
             {
                 test: /\.s[ac]ss$/i,
                 use: ['sass-loader'],
             }
         ]
+    },
+    optimization: {
+        minimizer: [
+            new CssMinimizerPlugin(),
+        ],
     },
     plugins: [
         new CleanWebpackPlugin(),
@@ -49,6 +56,7 @@ module.exports = {
             hash: true,
             minify: true
         }),
+        new MiniCssExtractPlugin(),
         new PreloadWebpackPlugin()
     ]
 };
