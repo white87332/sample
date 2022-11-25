@@ -1,0 +1,38 @@
+body {
+    box-sizing: border-box;
+}
+
+.fl
+{
+    display: flex;
+}
+
+.fl-a-i-c
+{
+    align-items: center;
+}
+
+.fl-j-c-c
+{
+    justify-content: center;
+}
+
+.fl-d-r
+{
+    flex-direction: row;
+}
+
+.fl-d-c
+{
+    flex-direction: column;
+}
+
+.fl-wr
+{
+    flex-wrap: wrap;
+}
+
+.fl-no-wr
+{
+    flex-wrap: nowrap;
+}

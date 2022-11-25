@@ -1,31 +1,21 @@
 import React, { Suspense, lazy } from 'react';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { createGlobalStyle } from 'styled-components';
-import { Normalize } from 'styled-normalize';
-
-const GlobalStyle = createGlobalStyle`
-    body {
-        box-sizing: border-box;
-    }
-`;
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import 'normalize.css';
+import '../css/global.css';
 
 const Index = lazy(() => import('./pages/index/index'));
 
-export function createRoutes(store)
+export function createRoutes()
 {
     return (
         <React.StrictMode>
-                <BrowserRouter>
-                    <Suspense fallback={<div>Loading...</div>}>
-                        <React.Fragment>
-                            <Normalize />
-                            <GlobalStyle />
-                            <Routes>
-                                <Route path="/" element={<Index />} />
-                            </Routes>
-                        </React.Fragment>
-                    </Suspense>
-                </BrowserRouter>
+            <BrowserRouter>
+                <Suspense fallback={<div>Loading...</div>}>
+                    <Routes>
+                        <Route path="/" element={<Index />} />
+                    </Routes>
+                </Suspense>
+            </BrowserRouter>
         </React.StrictMode>
     );
 }
