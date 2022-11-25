@@ -3,6 +3,6 @@ module.exports = {
     {
         '\\.(css|scss)$': 'identity-obj-proxy'
     },
-    testEnvironment: "jsdom",
+    testEnvironment: 'jsdom',
     setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect']
 };
