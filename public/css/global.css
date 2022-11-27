@@ -19,6 +19,11 @@ body {
     justify-content: center;
 }
 
+.fl-j-c-sb
+{
+    justify-content: space-between;
+}
+
 .fl-d-r
 {
     flex-direction: row;

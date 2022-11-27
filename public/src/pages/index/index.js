@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
-import './index.scss';
+import styles from './index.module.css';
 
 export default function Index(props)
 {
     return (
-        <div className="p_index fl fl-a-i-c fl-j-c-c">
+        <div className={`${styles.index} fl`}>
+            <div className={styles.test}>
+                test
+            </div>
 
-        123
+            <div className={styles.aaa}>
+                aaa
+            </div>
         </div>
     );
 }
