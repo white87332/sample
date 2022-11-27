@@ -3,12 +3,7 @@ div.index
     display: flex;
 }
 
-div.test
+div.test, div.aaa
 {
     font-size: 24px;
-}
-
-div.aa
-{
-    font-size: 32px;
 }

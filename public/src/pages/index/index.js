@@ -4,7 +4,7 @@ import styles from './index.module.css';
 export default function Index(props)
 {
     return (
-        <div className={`${styles.index} fl`}>
+        <div className={styles.index}>
             <div className={styles.test}>
                 test
             </div>

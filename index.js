@@ -10,7 +10,7 @@ app.use(express.static(path.resolve('public')));
 if (process.env.NODE_ENV === 'development')
 {
     const webpack = require('webpack');
-    const config = require('./webpack.dev');
+    const config = require('./webpack.config');
 
     const compiler = webpack(config);
 
