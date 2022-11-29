@@ -9,7 +9,15 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 const isDevelopment = process.env.NODE_ENV === 'development';
 
-let cssModule = ['style-loader', { loader: 'css-loader', options: { sourceMap: isDevelopment ? true : false } }, 'sass-loader', 'postcss-loader'];
+let cssModule = ['style-loader', {
+    loader: 'css-loader',
+    options: {
+        modules: {
+            localIdentName: isDevelopment ? '[path][name]__[local]' : '[hash:base64]',
+        }
+    }
+}, 'sass-loader', 'postcss-loader'];
+
 if (!isDevelopment)
 {
     cssModule[0] = MiniCssExtractPlugin.loader;
