@@ -1,13 +1,5 @@
 {
-    "env": {
-        "es6": true,
-        "node": true,
-        "browser": true
-    },
-    "plugins": [
-        "react-hooks"
-    ],
-    "extends": "airbnb",
+    "extends": ["airbnb", "airbnb/hooks"],
     "globals": {
         "log": true,
         "browserCookies": true
@@ -78,6 +70,7 @@
             0, 4
         ],
         "react/jsx-no-bind": 0,
+        "react/button-has-type": 0,
         "semi": [2, "always"],
         "guard-for-in": 0,
         "react-hooks/rules-of-hooks": "error",
