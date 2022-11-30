@@ -1,12 +1,4 @@
-import React, { memo } from "react";
-
-const isEqual = (prevProps, nextProps) => {
-    if (prevProps.number !== nextProps.number)
-    {
-        return false;
-    }
-    return true;
-};
+import React, { memo } from 'react';
 
 function ChildMemo({ number })
 {
@@ -19,4 +11,10 @@ function ChildMemo({ number })
     );
 }
 
-export default memo(ChildMemo, isEqual);
+export default memo(ChildMemo, (prevProps, nextProps) => {
+    if (prevProps.number !== nextProps.number)
+    {
+        return false;
+    }
+    return true;
+});

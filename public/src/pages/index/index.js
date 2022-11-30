@@ -1,6 +1,7 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import Child from './child';
 import ChildMemo from './childMemo';
+import ChildCallback from './childCallback';
 import styles from './index.module.css';
 
 export default function Index(props)
@@ -14,6 +15,10 @@ export default function Index(props)
     }, []);
 
     console.log('memoizedValue', memoizedValue);
+
+    const resetCount = useCallback(() => {
+        setCount(0);
+    }, []);
 
     return (
         <div className={styles.index}>
@@ -38,6 +43,10 @@ export default function Index(props)
             <hr />
 
             <ChildMemo step={step} count={count} number={number} />
+
+            <hr />
+
+            <ChildCallback reset={resetCount} />
         </div>
     );
 }
