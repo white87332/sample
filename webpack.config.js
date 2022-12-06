@@ -3,13 +3,14 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-// const PreloadWebpackPlugin = require('@vue/preload-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-
+const TerserPlugin = require('terser-webpack-plugin');
+// const PreloadWebpackPlugin = require('@vue/preload-webpack-plugin');
+//
 const isDevelopment = process.env.NODE_ENV === 'development';
 
-let cssModule = ['style-loader', {
+let cssModule = [isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader, {
     loader: 'css-loader',
     options: {
         modules: {
@@ -18,13 +19,9 @@ let cssModule = ['style-loader', {
     }
 }, 'sass-loader', 'postcss-loader'];
 
-if (!isDevelopment)
-{
-    cssModule[0] = MiniCssExtractPlugin.loader;
-}
 
 let config = {
-    devtool: isDevelopment ? 'source-map' : false,
+    devtool: isDevelopment ? 'source-map' : 'hidden-source-map',
     mode: isDevelopment ? 'development' : 'production',
     entry: isDevelopment ? { app: ['webpack-hot-middleware/client', './public/src/app'] } : { app: ['./public/src/app'] },
     output: {
@@ -74,8 +71,16 @@ let prod = {
         maxAssetSize: 512000
     },
     optimization: {
+        minimize: true,
         minimizer: [
             new CssMinimizerPlugin(),
+            new TerserPlugin({
+                terserOptions: {
+                   compress: {
+                       drop_console: true,
+                   },
+        		}
+            })
         ],
     },
     plugins: [
@@ -83,8 +88,6 @@ let prod = {
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: './public/tmpl.html',
-            hash: true,
-            minify: true
         }),
         new MiniCssExtractPlugin(),
         // new PreloadWebpackPlugin()
