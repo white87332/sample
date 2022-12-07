@@ -19,7 +19,6 @@ let cssModule = [isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader, {
     }
 }, 'sass-loader', 'postcss-loader'];
 
-
 let config = {
     devtool: isDevelopment ? 'source-map' : 'hidden-source-map',
     mode: isDevelopment ? 'development' : 'production',
@@ -76,10 +75,10 @@ let prod = {
             new CssMinimizerPlugin(),
             new TerserPlugin({
                 terserOptions: {
-                   compress: {
-                       drop_console: true,
-                   },
-        		}
+                    compress: {
+                        drop_console: true,
+                    },
+                }
             })
         ],
     },
