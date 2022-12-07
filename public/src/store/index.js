@@ -1,10 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counter from './counter';
+import counterReducer from './counterReducer';
 
-export default function configureAppStore(preloadedState) {
+export default function configureAppStore(preloadedState)
+{
     const store = configureStore({
         reducer: {
-            counter
+            counter: counterReducer
         },
         preloadedState,
     });
