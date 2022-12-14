@@ -79,6 +79,7 @@
         "semi": [2, "always"],
         "guard-for-in": 0,
         "react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "warn"
+        "react-hooks/exhaustive-deps": "warn",
+        "import/no-import-module-exports": 0
     }
 }

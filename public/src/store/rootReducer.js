@@ -1,5 +1,5 @@
-import counterReducer from './counterReducer';
+import counter from './counterReducer';
 
 export const rootReducer = {
-    counter: counterReducer
+    counter
 };

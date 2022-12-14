@@ -8,5 +8,10 @@ export default function configureAppStore(preloadedState)
         preloadedState,
     });
 
+    if (process.env.NODE_ENV !== 'production' && module.hot)
+    {
+        module.hot.accept('./rootReducer', () => store.replaceReducer(rootReducer));
+    }
+
     return store;
 }
