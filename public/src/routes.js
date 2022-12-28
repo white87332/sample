@@ -5,6 +5,7 @@ import '../css/global.css';
 
 const Index = lazy(() => import('./pages/index/index'));
 const ReduxToolkit = lazy(() => import('./pages/reduxToolkit/reduxToolkit'));
+const MouseTracker = lazy(() => import('./pages/renderProps/mouseTracker'));
 
 export function createRoutes(store)
 {
@@ -16,6 +17,7 @@ export function createRoutes(store)
                         <Routes>
                             <Route path="/" element={<Index />} />
                             <Route path="/reduxToolkit" element={<ReduxToolkit />} />
+                            <Route path="/renderProps" element={<MouseTracker />} />
                         </Routes>
                     </Suspense>
                 </BrowserRouter>
