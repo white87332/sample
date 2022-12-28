@@ -10,7 +10,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 //
 const isDevelopment = process.env.NODE_ENV === 'development';
 
-let cssModule = [isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader, {
+let loaders = [isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader, {
     loader: 'css-loader',
     options: {
         modules: {
@@ -46,7 +46,7 @@ let config = {
         },
         {
             test: /\.(sa|sc|c)ss$/i,
-            use: cssModule
+            use: loaders
         }
         ],
     },
